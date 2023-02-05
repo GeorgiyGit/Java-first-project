@@ -20,6 +20,8 @@ public class CategoryService {
         this.user=user;
         this.password=password;
     }
+
+    //Insert categories to db
     public void insert(CategoryInsert category){
         try(Connection connection = DriverManager.getConnection(conStr,user,password)){
             String query ="Insert into categories (name) values(?)";
@@ -32,6 +34,8 @@ public class CategoryService {
         }
     }
 
+
+    //Get all categories from db
     public List<CategoryItem> getAll(){
         List<CategoryItem> categories = new ArrayList<CategoryItem>();
         try(Connection connection = DriverManager.getConnection(conStr,user,password)){
@@ -49,6 +53,8 @@ public class CategoryService {
         }
         return categories;
     }
+
+    //remove one category by id
     public void remove(int id){
         try(Connection connection = DriverManager.getConnection(conStr,user,password)){
             String query ="DELETE FROM categories WHERE id=(?)";
@@ -60,6 +66,8 @@ public class CategoryService {
             System.out.println("DB Error "+ ex.getMessage());
         }
     }
+
+    //updates one category
     public void update(CategoryItem newItem){
         try(Connection connection = DriverManager.getConnection(conStr,user,password)){
             String query ="UPDATE categories SET name=(?) WHERE id=(?)";

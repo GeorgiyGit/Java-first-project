@@ -40,6 +40,8 @@ public class Main {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 char symbol= input.next().charAt(0);
 
+                //When we write s or w, we change selected item in menu
+                //Коли ми пишемо s чи w, ми міняємо вибраний елемент
                 if (symbol == 's') {
                     if (n == 3) n = 0;
                     else n++;
@@ -84,16 +86,24 @@ public class Main {
 
 
     }
+
+    //Method for printing all categories
+    //Виводить всі категорії
     public static void printCategories(CategoryService categoryService){
         List<CategoryItem> categories = categoryService.getAll();
         for(int i=0;i<categories.size();i++){
             System.out.println(categories.get(i).toString());
         }
     }
+
+    //Clear screen
+    //Повинно повныстю очищати екран, але не працює
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+
+
     private static void personsAction(){
         Random r = new Random();
 
@@ -116,6 +126,7 @@ public class Main {
                 .toString()
                 .substring(0, length);
     }
+
     private static int getRandomNumber(int left, int right) {
         Random r = new Random();
         return r.nextInt(left, right);
